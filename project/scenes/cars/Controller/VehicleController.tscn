@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt2cn84lkcfbh"]
+
+[ext_resource type="Script" uid="uid://ccjsvdvwy3plt" path="res://scenes/cars/Controller/VehicleController.gd" id="1_s428b"]
+[ext_resource type="PackedScene" uid="uid://cxa4ffdgj7pl3" path="res://scenes/cars/Mach6/Mach6Model.tscn" id="2_cfb75"]
+
+[node name="VehicleController" type="CharacterBody3D" node_paths=PackedStringArray("model", "wheel_back_left_cage", "wheel_back_right_cage", "wheel_front_left_cage", "wheel_front_right_cage")]
+script = ExtResource("1_s428b")
+model = NodePath("Model")
+wheel_back_left_cage = NodePath("Model/Body/WheelBackLeft/TireCage")
+wheel_back_right_cage = NodePath("Model/Body/WheelBackRight/TireCage")
+wheel_front_left_cage = NodePath("Model/Body/WheelFrontLeft/TireCage")
+wheel_front_right_cage = NodePath("Model/Body/WheelFrontRight/TireCage")
+wheel_circumference_front_left = 2.26463
+wheel_circumference_front_right = 2.26463
+wheel_circumference_back_left = 2.26463
+wheel_circumference_back_right = 2.26463
+
+[node name="Model" parent="." instance=ExtResource("2_cfb75")]
+
+[editable path="Model"]

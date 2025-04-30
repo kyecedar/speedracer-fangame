@@ -13,3 +13,18 @@ config_version=5
 config/name="Speed Racer Fan Game"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Racer="*res://globals/Racer.gd"
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "purple",
+"res://assets/": "pink",
+"res://classes/": "orange",
+"res://globals/": "orange",
+"res://resources/": "orange",
+"res://scenes/": "red"
+}

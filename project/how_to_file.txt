@@ -1,0 +1,136 @@
+Hello! I've heard some teams use naming conventions to keep things tidy, and I wanna try that.
+I use most of these already in my projects, but I'm writing these down as rules for myself to follow too.
+
+
+
+Quick reference:
+• groups specifics: PascalCase
+• groups general: camelCase
+• asset files: snake_case.png
+• game files: PascalCase.tscn
+• resource files: delimiterCamelCase.res
+
+Remember to rename nodes descriptively. Usually, it's "NodeType" + "WhatNodeDoes",
+like "TimerRespawn" or "RaycastPlayerBullet".
+
+And remember to use or read the "Editor Description" in the Inspector tab when you scroll all the way down!
+I'll be using it to kinda comment on things.
+
+
+
+
+
+First, rules for naming. ======
+
+• Nodes will use Pascal Case, omit "2D" or "3D":
+  "TimerRespawn", "Player", "RaycastPlayerBullet"
+
+• Any text in name that's immediately apparent should be omitted:
+  For example, "CollisionShape2D" should turn into "Collision".
+
+• Folders that are grouping specific things will use Pascal Case:
+  "Meats", "FriedVegetables", "Player"
+
+• Folders that are grouping general things will use Camel Case:
+  "food", "dialogue", "enemies"
+  (couldn't think of one that's broad enough that uses 2 words, but it'd "lookLikeThis")
+
+If you're confused about if a folder is specific or general, think if there's going
+to be more folders than files in it. If more folders, then it's usually more general, 
+if more files, then it's usually more specific.
+
+• Asset files will be Snake Case:
+  "player_inventory_slot.png"
+
+• Game files will be Pascal Case:
+  "Rogue.gd", "StartingRoom.tscn", "Player.tscn"
+
+• Resources will be Camel Case with a little delimiter in front:
+  "weaponRifle.res", "weaponKnife.res", "lootOfRaider.res"
+
+
+
+
+
+In-script conventions: ======
+
+• Variables will be in Snake Case:
+  "camera", "camera_max_distance", "speed"
+
+• Variables that reference relative nodes should be export variables, where you hook them up manually.
+  This prevents having to retype names when renaming or moving nodes.
+
+• Variables that are booleans will have words such as "is" or "has" in front:
+  "is_dead", "has_loot"
+
+• Variables will state their type:
+  "var x: float = 0.0", "var is_cool: bool = true"
+
+• Functions will also be in Snake Case:
+  "_process()", "calculate_camera_position()", "process_movement()"
+
+• Functions will state their variable types and what type they return:
+  "func _process(delta: float) -> void:", "func test_polarity(a: bool, b: bool) -> float:"
+
+• Classes will be in Pascal Case:
+  "Enemy", "SaveData", "LevelData"
+
+
+
+
+
+Ok so here's a list of all the folders and where to put files and folders in them. ======
+
+"/Assets":
+	• In-development assets, like ".kra", ".csp" ".afdesign", ".flp", etc.
+	• I'm using a capital "A" here to differentiate it from "/project/assets".
+
+
+"/Concepting":
+	• Lil doodles or sketches to map out how the game'll look.
+
+
+"/project/addons":
+	• Folders and files for addons, obvi.
+
+
+"/project/assets":
+	• Assets that are to be viewed or experienced directly by the player.
+	• Ready-to-ship assets.
+	• Prototype assets.
+
+"/project/assets/sprites":
+	• Spritesheets.
+	• Single-frame sprites.
+	• Group ones that can be categorized neatly, like "Player" or "GroundItems"
+
+"/project/assets/tilemaps":
+	• Environment-specific, tileable textures.
+	  For example, a single sprite of a barrel isn't tilable so it goes in the "sprites" folder.
+	  But a barrel that has several variations in the same texture would be a tilemap.
+	  Not trying to be infantalizing, I just wanna be thourough.
+	• Group alike things together, like "desert" or "forest"
+
+
+"/project/classes":
+	• Classes are for data consolidation and making data iterable, so if you want a whole bunch of variables
+	  and functions that has to do with level generation, you can compress them down into a single class.
+	  Things that are saved and loaded a bunch should be resources instead.
+
+
+"/project/resources":
+	• Files that hold the data of resources, like guns or upgrades.
+	• Files that hold data to be saved, like player position, inventory, etc.
+
+
+"/project/globals":
+	• For global scripts.
+	• If more global scripts are needed,
+	  ask yourself if it's a general-use function/variable. If yes, put it in the main global script.
+	  If no, then make a neat single file for it and related functions/variables, we're trying to limit
+	  global scripts, since too many can make it hard to track stuff in a project.
+
+
+"/project/scenes":
+	• ".tscn" files and their associated scripts and shaders.
+	• Group alike things together, like "Player" or "environment".
